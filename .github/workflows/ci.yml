@@ -63,7 +63,7 @@ jobs:
 
       - name: 📦 Run tests
         run: |
-          mv library_back/.env-sample .env
+          mv library_back/.env-sample library_back/.env
           docker load -i image_$GITHUB_SHA
           docker-compose -f library_back/docker.compose.cache.yml run --rm --entrypoint "sh test.sh" backend
         env:
