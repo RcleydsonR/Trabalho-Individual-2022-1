@@ -38,6 +38,6 @@ services:
         volumes:
             - './library_front:/app'
         ports:
-            - '3000:3000'
+            - '3000:80'
         depends_on:
             - backend
