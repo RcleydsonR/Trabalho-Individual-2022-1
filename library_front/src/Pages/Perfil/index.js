@@ -14,6 +14,7 @@ const Perfil = () => {
 
     useEffect(() => {
         resBooks();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
       }, [sessionStorage.getItem('app-token')]);
 
       const listBooks = books.map((book) =>

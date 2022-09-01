@@ -34,6 +34,7 @@ const Donate = () => {
 
   useCallback(() => {
     createBook();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [sessionStorage.getItem('app-token')]);
 
   return (
