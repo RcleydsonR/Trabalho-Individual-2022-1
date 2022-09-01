@@ -76,3 +76,52 @@ jobs:
       #     files: ./coverage.xml
       #     flags: unittests 
       #     name: codecov-umbrella 
+
+  lint-front:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./library_front
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+          cache-dependency-path: library_front/package-lock.json
+
+      - name: 🏗 Install dependencies
+        run: npm ci
+
+      - name: 📦 Lint with eslint
+        run: npx eslint ./src
+
+  build-test-front:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: ./library_front
+    steps:
+      - name: 🏗 Setup repo
+        uses: actions/checkout@v3
+
+      - name: 🏗 Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.x
+          cache: 'npm'
+          cache-dependency-path: library_front/package-lock.json
+
+      - name: 🏗 Install dependencies
+        run: npm ci
+
+      - name: 📦 Build app bundle
+        run: npm run build --if-present
+
+      - name: 📦 Test app
+        run: npm test
