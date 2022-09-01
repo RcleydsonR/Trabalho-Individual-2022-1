@@ -10,27 +10,14 @@ services:
         ports:
             - 5432:5432
     backend:
-        build:
-            context: ./library_back
-            dockerfile: Dockerfile
+        image: "${DOCKER_IMAGE}"
         restart: always
         container_name: library_backend
         environment:
             - DJANGO_SETTINGS_MODULE=src.settings
         volumes:
-            - ./library_back:/var/www
+            - .:/var/www
         ports:
             - 8000:8000
         depends_on:
             - postgres
-    frontend:
-        build:
-            context: ./library_front
-            dockerfile: Dockerfile
-        container_name: library_frontend
-        volumes:
-            - './library_front:/app'
-        ports:
-            - '3000:80'
-        depends_on:
-            - backend

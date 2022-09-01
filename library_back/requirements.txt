@@ -11,3 +11,9 @@ python-dotenv==0.20.0
 pytz==2022.1
 sqlparse==0.4.2
 tzdata==2022.1
+
+coverage
+pytest-cov==3.0.0
+pytest-django==4.5.2
+pytest-subtests==0.7.0
+pytest==7.1.2

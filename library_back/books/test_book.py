@@ -1,9 +1,9 @@
-import unittest
+from django.test import TestCase
 from .models import Book
 from .serializers import BookSerializer
 
 
-class BookTests(unittest.TestCase):
+class BookTests(TestCase):
     def setUp(self) -> None:
         self.book_attr = {
             'title': 'Ensaio sobre a Cegueira',
